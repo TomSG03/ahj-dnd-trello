@@ -1,6 +1,6 @@
 # Продвинутый JavaScript в браузере
 
-## [Домашнее задание к лекции «Работа с HTML-формами»](https://github.com/TomSG03/ahj-homeworks/tree/simplification/forms)
+## [Домашнее задание к лекции «DND»](https://github.com/TomSG03/ahj-homeworks/tree/simplification/dnd)
 
-- [ ] Popovers
+- [ ] DND
 
