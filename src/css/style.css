@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #999;
+  font-family: "PT Sans", Calibri, Helvetica, Arial, sans-serif;
+  /* font-weight: 400;
+	font-size: 20px; */
+}
+
+.button-block {
+  margin: 150px auto;
+  width: 300px;
+  text-align: center;
+}
+
+.button {
+  position: relative;
+  height: 200px;
+  margin-top: 40px;
+}
+
+.btn {
+  margin-top: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #c12e2a;
+}
+
+.popover {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: .3rem;
+  font-size: .875rem;
+  display: block;
+  text-align: left;
+  width: 270px;
+  line-height: 1.5;
+}
+
+
+/* .popover::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -15px;
+  top: 57%;
+  margin-top: -20px;
+  width: 0;
+  height: 0;
+  border-width: 15px 15px 15px 0;
+  border-color: transparent #111010 transparent transparent;
+  border-style: solid;
+} */
+
+
+/* .popover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -14px;
+  top: 57%;
+  margin-top: -20px;
+  width: 0;
+  height: 0;
+  border-width: 14px 14px 14px 0;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+} */
+
+.arrow {
+  position: absolute;
+  left: -15px;
+  top: 20px;
+  height: 20px;
+  width: 15px;
+  /* background-color: #c12e2a; */
+  /* z-index: 100; */
+}
+
+.arrow::after {
+  position: absolute;
+  display: block;
+  content: "";
+  border-color: transparent;
+  border-style: solid;
+  left: 0px;
+  border-right-color: #fff;
+  border-width: .5rem .5rem .5rem 0;
+  box-sizing: border-box;
+}
+
+.arrow::before {
+  position: absolute;
+  display: block;
+  content: "";
+  left: 2px;
+  border-right-color: rgba(0, 0, 0, .25);
+  border-color: transparent;
+  border-style: solid;
+  border-width: .5rem .5rem .5rem 0;
+  box-sizing: border-box;
+}
+
+.popover-header {
+  padding: .5rem .75rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+  border-top-left-radius: calc(.3rem - 1px);
+  border-top-right-radius: calc(.3rem - 1px);
+  color: #212529;
+}
+
+.popover-body {
+  padding: .5rem .75rem;
+  color: #212529;
+  background-color: #fff;
+  border-radius: .3rem;
+}
+
+.visible {
+  visibility: visible;
+}
