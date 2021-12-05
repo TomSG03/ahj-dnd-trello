@@ -50,45 +50,51 @@ export default class Trello {
 
   display() {
     this.colsFill();
+    this.createCap();
 
     this.dom.addEventListener('mousedown', (e) => {
-      e.target.style.cursor = 'grabbing';
       if (e.target.classList.contains('btn-del')) { return; }
       const target = e.target.closest('.list-item');
       if (!target) {
         return;
       }
-      this.target = target;
 
-      this.dragItem = this.target.cloneNode(true);
-      this.dragItem.style.top = `${e.pageY - e.target.offsetHeight}px`;
-      this.dragItem.style.left = `${e.pageX - e.target.offsetWidth}px`;
-      this.dragItem.style.width = `${this.target.offsetWidth}px`;
-      this.dragItem.style.zIndex = '5000';
-      this.dragItem.style.position = 'absolute';
-      this.dragItem.style.opacity = '0.8';
-      this.dragItem.style.pointerEvents = 'none';
-      this.dom.appendChild(this.dragItem);
-      this.target.classList.add('selected');
+      if (e.target.classList.contains('list-item')) {
+        this.target = target;
+        e.target.style.cursor = 'grabbing';
+        // const source = document.elementFromPoint(e.clientX, e.clientY);
+        // console.log(`H: ${source.offsetHeight} | W: ${source.offsetWidth} | Y: ${e.pageY - source.offsetTop} | X: ${e.pageX - source.offsetLeft}`);
+
+        this.dragItem = this.target.cloneNode(true);
+        this.dom.appendChild(this.dragItem);
+        this.dragItem.style.top = `${e.pageY - this.target.offsetHeight / 2}px`;
+        this.dragItem.style.left = `${e.pageX - this.target.offsetWidth / 2}px`;
+        this.dragItem.style.width = `${this.target.offsetWidth}px`;
+        this.dragItem.style.zIndex = '5000';
+        this.dragItem.style.position = 'absolute';
+        this.dragItem.style.opacity = '0.8';
+        this.dragItem.style.pointerEvents = 'none';
+
+        this.target.classList.add('selected');
+      }
     });
 
     this.dom.addEventListener('mouseup', (e) => {
-      e.target.style.cursor = 'grab';
       if (!this.target) {
         return;
       }
-      this.dragItem.style.display = 'none';
+      this.dom.style.cursor = 'default';
+      this.dom.querySelector('.list-block').style.cursor = 'default';
       const insertItem = document.elementFromPoint(e.clientX, e.clientY);
-      if (insertItem.classList.contains('list-item')) {
-        const midlle = insertItem.offsetHeight / 2;
-        const currentPos = e.pageY - insertItem.offsetTop;
-        if (currentPos > midlle) {
-          insertItem.insertAdjacentElement('afterEnd', this.target);
-        }
-        if (currentPos < midlle) {
-          insertItem.insertAdjacentElement('beforeBegin', this.target);
-        }
+      if (insertItem.classList.contains('list-item-cap')) {
+        this.target.visibility = 'visible';
+        this.cap.replaceWith(this.target);
       }
+
+      if (this.cap) {
+        this.cap.remove();
+      }
+
       this.dragItem.remove();
       this.target.classList.remove('selected');
       this.dragItem = null;
@@ -105,17 +111,28 @@ export default class Trello {
       if (!this.target) {
         return;
       }
-      this.dragItem.style.left = `${e.pageX - this.dragItem.offsetWidth}px`;
-      this.dragItem.style.top = `${e.pageY - this.dragItem.offsetHeight}px`;
-      // const source = document.elementFromPoint(e.clientX, e.clientY);
-      // if (source.classList.contains('list-item')) {
-      //   const midlle = source.offsetHeight / 2;
-      //   const currentPos = e.pageY - source.offsetTop;
-      //   console.log(`Width: ${source.offsetHeight} | Y: ${e.pageY - source.offsetTop}`);
-      // }
+      e.target.style.cursor = 'grabbing';
+      this.dragItem.style.left = `${e.pageX - this.dragItem.offsetWidth / 2}px`;
+      this.dragItem.style.top = `${e.pageY - this.dragItem.offsetHeight / 2}px`;
+      const insertItem = document.elementFromPoint(e.clientX, e.clientY);
+      if (insertItem.classList.contains('list-item') && insertItem !== this.target && insertItem.previousSibling !== this.target && insertItem.nextSibling !== this.target) {
+        const midlle = insertItem.offsetHeight / 2;
+        const currentPos = e.pageY - insertItem.offsetTop;
+        this.cap.style.height = `${this.dragItem.offsetHeight}px`;
+        if (currentPos > midlle) {
+          insertItem.insertAdjacentElement('afterEnd', this.cap);
+        }
+        if (currentPos < midlle) {
+          insertItem.insertAdjacentElement('beforeBegin', this.cap);
+        }
+      }
+      if (insertItem.classList.contains('addRec')) {
+        insertItem.closest('.list-block').querySelector('ul').append(this.cap);
+      }
     });
 
     this.dom.addEventListener('click', (e) => {
+      // e.target.style.cursor = 'default';
       if (e.target.classList.contains('addRec')) {
         e.target.closest('.list-block').append(this.formAddRec());
         e.target.remove();
@@ -146,14 +163,19 @@ export default class Trello {
     });
   }
 
+  createCap() {
+    this.cap = document.createElement('li');
+    this.cap.className = 'list-item-cap';
+  }
+
   // eslint-disable-next-line class-methods-use-this
   formAddRec() {
     const form = document.createElement('form');
     form.className = 'formAddRec';
     form.innerHTML = `
-      <textarea placeholder="Новая запись ..."></textarea>
+      <textarea placeholder="Новая запись..."></textarea>
       <input class="form-btn-submit" type="submit" value="Добавить"/>
-      <button class="form-btn-cancel">Отмена</button>`;
+      <div class="form-btn-cancel">✖</div>`;
     return form;
   }
 }
