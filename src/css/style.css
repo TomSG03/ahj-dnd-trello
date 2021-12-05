@@ -20,6 +20,8 @@ body {
   width: 900px;
 
   align-items: flex-start;
+
+  position: relative;
 }
 
 .list-block {
@@ -40,10 +42,13 @@ body {
   overflow-wrap: break-word;
   border-radius: 5px;
   cursor: grab;
+  /* width: 230px; */
 
   -webkit-box-shadow: 4px 4px 6px 0px rgba(34, 60, 80, 0.11);
   -moz-box-shadow: 4px 4px 6px 0px rgba(34, 60, 80, 0.11);
   box-shadow: 4px 4px 6px 0px rgba(34, 60, 80, 0.11);
+
+  box-sizing: border-box;
 }
 
 .list-item:hover .btn-del {
@@ -57,17 +62,17 @@ body {
   position: absolute;
   right: 0px;
   top: 0;
-  z-index: 1000;
-  width: 20px;
-  height: 20px;
+  z-index: 100;
+  width: 15px;
+  height: 15px;
   display: none;
   cursor: pointer;
+  border-radius: 5px;
 } 
 
-/* .btn-del::after {
-  content: '\2716';
-  display: block;
-} */
+.selected {
+  background-color: gray;
+}
 
 .addRec {
   color: #798c97;
