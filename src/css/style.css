@@ -1,5 +1,3 @@
-
-
 * {
   margin: 0;
   padding: 0;
@@ -15,20 +13,13 @@ body {
   color: #1e3c4d;
 }
 
-.wrapper {
-
-}
-
 .trello {
-  /* margin: 0 auto; */
+  margin: 0 auto;
   padding: 10px;
   display: flex;
   width: 900px;
 
   align-items: flex-start;
-
-  position: relative;
-
 }
 
 .list-block {
@@ -37,6 +28,11 @@ body {
   margin: 0 5px;
   border-radius: 5px;
   padding: 10px;
+  cursor: default;
+}
+
+ul {
+  cursor: default;
 }
 
 .list-item {
@@ -60,7 +56,7 @@ body {
 
 .list-item-cap {
   list-style-type: none;
-  background-color: gray;
+  background-color: rgb(224, 203, 203);
   border-radius: 5px;
   cursor: grab;
   width: 250px; 
@@ -93,18 +89,19 @@ body {
 } 
 
 .selected {
-  background-color: gray;
+  background-color: rgb(224, 203, 203);
+  color: rgb(224, 203, 203);;
 }
 
 .addRec {
   color: #798c97;
   cursor: pointer;
   user-select: none;
+  margin-top: 10px;
 }
 
 .formAddRec {
-
-
+  margin-top: 10px;
 }
 
 textarea {
