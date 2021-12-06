@@ -4,3 +4,4 @@
 
 - [x] DND
 
+[![CircleCI](https://circleci.com/gh/TomSG03/ahj-dnd-trello/tree/main.svg?style=svg)](https://circleci.com/gh/TomSG03/ahj-dnd-trello/tree/main)
