@@ -6,10 +6,7 @@
 body {
   color: #999;
   font-family: "PT Sans", Calibri, Helvetica, Arial, sans-serif;
-  /* height: 100%; */
   background-color: #107abb;
-  /* font-weight: 400;
-	font-size: 20px; */
   color: #1e3c4d;
 }
 
@@ -90,7 +87,7 @@ ul {
 
 .selected {
   background-color: rgb(224, 203, 203);
-  color: rgb(224, 203, 203);;
+  color: rgb(105, 102, 94);
 }
 
 .addRec {
