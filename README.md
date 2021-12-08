@@ -7,3 +7,6 @@
 
 ## [Gh - Pages](https://tomsg03.github.io/ahj-dnd-trello/)
 [![CircleCI](https://circleci.com/gh/TomSG03/ahj-dnd-trello/tree/main.svg?style=svg)](https://circleci.com/gh/TomSG03/ahj-dnd-trello/tree/main)
+
+---
+[Спискок задач](https://github.com/TomSG03/ahs-homeworks-list)
